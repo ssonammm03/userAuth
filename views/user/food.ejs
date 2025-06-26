@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Food Menu - Sherubtse Restro</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #ffffff;
+    }
+
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 3px solid #0078d4;
+      padding: 15px 30px;
+      background-color: white;
+    }
+
+
+    .header-left {
+      display: flex;
+      align-items: center;
+    }
+
+
+    .logo {
+      width: 50px;
+      height: 50px;
+      margin-right: 15px;
+    }
+
+
+    .nav-links {
+      font-weight: 600;
+    }
+
+
+    .btn-logout {
+      margin-left: 10px;
+      padding: 10px 18px;
+      background-color: #000000;
+      color: white;
+      font-size: 14px;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+
+    .main-content {
+      padding: 40px;
+      background-color: #f8f8f8;
+      min-height: 100vh;
+    }
+
+
+    .food-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+
+    .food-card {
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s ease;
+    }
+
+
+    .food-card:hover {
+      transform: translateY(-5px);
+    }
+
+
+    .food-image {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+
+    .food-details {
+      padding: 20px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+
+    .food-name {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: #333;
+    }
+
+
+    .food-description {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 12px;
+      min-height: 60px;
+    }
+
+
+    .food-price {
+      font-size: 16px;
+      font-weight: bold;
+      color: #0078d4;
+      margin-top: auto;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-left">
+      <img src="/images/logo.png" alt="Logo" class="logo" />
+      <h2>Sherubtse Restro</h2>
+    </div>
+    <div class="nav-links">
+      <a href="/user/dashboard" class="btn-logout">Home</a>
+      <a href="/user/foods" class="btn-logout">Food</a>
+      <a href="/logout" class="btn-logout">Logout</a>
+    </div>
+  </header>
+
+
+  <main class="main-content">
+    <div class="food-grid">
+      <% foods.forEach((food) => { %>
+        <div class="food-card">
+          <% if (food.image_url) { %>
+            <img src="<%= food.image_url %>" alt="Food Image" class="food-image" />
+          <% } else { %>
+            <img src="/images/placeholder.png" alt="No Image" class="food-image" />
+          <% } %>
+
+
+          <div class="food-details">
+            <div class="food-name"><%= food.name %></div>
+            <div class="food-description"><%= food.description || "No description available." %></div>
+            <div class="food-price">Nu. <%= Number(food.price).toFixed(2) %></div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </main>
+</body>
+</html>
+
+

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Add Food - Sherubtse Restro</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #ffffff;
+    }
+
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 3px solid #0078d4;
+      padding: 15px 30px;
+      background-color: white;
+    }
+
+
+    .header-left {
+      display: flex;
+      align-items: center;
+    }
+
+
+    .logo {
+      width: 50px;
+      height: 50px;
+      margin-right: 15px;
+    }
+
+
+    .nav-links {
+      font-weight: 600;
+    }
+
+
+    .btn-logout {
+      margin-left: 10px;
+      padding: 12px 20px;
+      background-color: #000000;
+      color: white;
+      font-size: 14px;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+
+    .main-content {
+      padding: 50px;
+      background-color: #000000;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+
+    .dashboard-card {
+      background-color: white;
+      border-radius: 10px;
+      padding: 40px;
+      width: 100%;
+      max-width: 600px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+
+    .dashboard-card h1 {
+      margin-bottom: 30px;
+      text-align: center;
+      color: #0078d4;
+    }
+
+
+    form label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+
+
+    form input[type="text"],
+    form input[type="number"],
+    form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+
+    form textarea {
+      resize: vertical;
+      height: 100px;
+    }
+
+
+    form button {
+      background-color: #0078d4;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      width: 100%;
+    }
+
+
+    .back-link {
+      display: inline-block;
+      margin-top: 20px;
+      text-decoration: none;
+      color: #0078d4;
+      font-weight: bold;
+    }
+
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-left">
+      <img src="/img/logo.png" alt="Logo" class="logo" />
+      <h2>Sherubtse Restro</h2>
+    </div>
+    <div class="nav-links">
+      <a href="/admin/dashboard" class="btn-logout">Home</a>
+      <a href="/admin/foods" class="btn-logout">Food</a>
+      <a href="/logout" class="btn-logout">Logout</a>
+    </div>
+  </header>
+
+
+  <main class="main-content">
+    <div class="dashboard-card">
+      <h1>Add Food Item</h1>
+
+
+      <form action="/admin/add-food" method="POST">
+        <label for="name">Food Name:</label>
+        <input type="text" id="name" name="name" required>
+
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description"></textarea>
+
+
+        <label for="image_url">Image URL:</label>
+        <input type="text" id="image_url" name="image_url">
+
+
+        <label for="price">Price (Nu.):</label>
+        <input type="number" id="price" name="price" step="0.01" required>
+
+
+        <button type="submit">Add Food</button>
+      </form>
+
+
+      <a href="/admin/food" class="back-link">← Back to Food List</a>
+    </div>
+  </main>
+</body>
+</html>

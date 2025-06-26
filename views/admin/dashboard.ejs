@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard - Sherubtse Semester Registration</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #ffffff;
+    }
+
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 3px solid #0078d4;
+      padding: 15px 30px;
+      background-color: white;
+    }
+
+
+    .header-left {
+      display: flex;
+      align-items: center;
+    }
+
+
+    .logo {
+      width: 50px;
+      height: 50px;
+      margin-right: 15px;
+    }
+
+
+    .nav-links {
+      font-weight: 600;
+    }
+
+
+    .main-content {
+      padding: 50px;
+      background-color: #000000;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+
+    .dashboard-card {
+      background-color: white;
+      border-radius: 10px;
+      padding: 30px;
+      width: 100%;
+      max-width: 600px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+
+    .dashboard-card h2 {
+      margin-bottom: 25px;
+    }
+
+
+    .btn-logout {
+      margin-top: 30px;
+      padding: 12px 25px;
+      background-color: #000000;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-left">
+      <img src="/img/logo.png" alt="Logo" class="logo" />
+      <h2>Sherubtse Restro</h2>
+    </div>
+    <div class="nav-links">
+      <a href="/admin/dashboard" class="btn-logout">Home</a>
+        <a href="/admin/food" class="btn-logout">Food</a>
+      <a href="/logout" class="btn-logout">Logout</a>
+    </div>
+  </header>
+
+
+  <main class="main-content">
+    <div class="dashboard-card">
+      <h2>Welcome, Admin!</h2>
+      <p>This is your dashboard where you can manage the system.</p>
+      <!-- Add admin-specific content here -->
+
+
+     
+    </div>
+  </main>
+</body>
+</html>
