@@ -3,8 +3,6 @@ const path = require('path');
 require('dotenv').config();
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
-const pgSession = require('connect-pg-simple')(session); // 🔑 Added
-const db = require('./config/db'); // 🔑 PostgreSQL DB connection
 const { createUserTable } = require('./models/userModel');
 const { createFoodTable } = require('./models/foodModel');
 
@@ -15,21 +13,17 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-
-// ✅ Secure session store using PostgreSQL
 app.use(session({
-  store: new pgSession({
-    pgPromise: db,
-  }),
   secret: process.env.SESSION_SECRET || 'secretkey',
   resave: false,
-  saveUninitialized: false,
+  saveUninitialized: true,
 }));
 
 // Set EJS view engine
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 // Route imports
 const authRoutes = require('./routes/authRoutes');
@@ -40,7 +34,7 @@ app.use('/', authRoutes);
 app.use('/admin', adminRoutes);
 app.use('/user', userRoute);
 
-// Create tables
+// Create user table if not exists
 createUserTable();
 createFoodTable();
 
